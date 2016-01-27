@@ -16,20 +16,26 @@ if (Meteor.isClient) {
             // Prevent default browser form submit
             event.preventDefault();
 
-            // get some output
-            console.log(event);
-
             // Get value from form element
             var name = event.target.name.value;
             var timeReady = event.target.timeReady.value;
+
+            if (!name) {
+                alert("Name must not be blank");
+                return;
+            }
+
+            if (!timeReady) {
+                alert("Estimated arrival time must be in format hh:mm");
+                return;
+            }
 
             // Insert a task into the collection
             Restaurants.insert({
                 name: name,
                 timeReady: timeReady,
                 createdAt: new Date(), // current time
-                owner: Meteor.userId(),           // _id of logged in user
-                username: Meteor.user().username  // username of logged in user
+                owner: Meteor.userId()           // _id of logged in user
             });
 
             // Clear form
@@ -54,7 +60,7 @@ if (Meteor.isClient) {
                 var timeString = "" + ((hours > 12) ? hours - 12 : hours);
                 timeString  += ((minutes < 10) ? ":0" : ":") + minutes;
                 timeString  += ((seconds < 10) ? ":0" : ":") + seconds;
-                timeString  += (hours >= 12) ? " pm" : " am";
+                timeString  += (hours >= 12) ? " PM" : " AM";
 
                 Session.set("timeString", timeString);
                 Session.set("time", time);

@@ -13,15 +13,43 @@
             <div class="col-md-10">
                 <form class="new-restaurant">
                     <div class="row">
-                        <div class="col-md-12"><input type="text" name="name" placeholder="Name" /></div>
+                        <div class="col-md-6">
+                            Name
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12"><input type="text" name="timeReady" placeholder="Estimated arrival time" /></div>
+                        <div class="col-md-6">
+                            <input type="text" name="name" style="width: 220px;"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Estimated Arrival Time
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' name="timeReady"
+                                           class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker3').datetimepicker({
+                                        format: 'LT'
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12"><input class="btn btn-default" type="submit" value="Submit"></div>
                     </div>
-
                 </form>
             </div>
             <div class="col-md-2">
