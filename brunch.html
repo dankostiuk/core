@@ -1,0 +1,75 @@
+<head>
+  <title>BrunchBuddy</title>
+</head>
+
+<body>
+	<div class="container">
+        <div class="row">
+		  	<div class="col-md-1"><img src="waffle-brunch.png" style="vertical-align:bottom"></div>
+            <div class="col-md-8"><h2>BrunchBuddy</h2></div>
+            <div class="col-md-3">{{> time}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <form class="new-restaurant">
+                    <div class="row">
+                        <div class="col-md-12"><input type="text" name="name" placeholder="Name" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><input type="text" name="timeReady" placeholder="Estimated arrival time" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><input class="btn btn-default" type="submit" value="Submit"></div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-2">
+                Total: {{restaurantCount}}
+            </div>
+        </div>
+		<div class="row" style="padding-top:10px">
+			<div class="col-md-12">
+			  	<table class="table table-hover">
+			  		<thead>
+					 <tr>
+                         <div class="col-md-5"><th>Restaurant</th></div>
+                         <div class="col-md-5"><th>Time ready</th></div>
+                         <div class="col-md-2"><th>Action</th></div>
+					 </tr>
+					</thead>
+					<tbody>
+						{{#each restaurants}}
+			  			<tr>
+				        	{{> restaurant}}
+				    	</tr>
+			      		{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+<template name="restaurant">
+    <div class="col-md-5">
+        <td><!--<div class="col-md-10">-->
+            <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" /> -->
+            <span class="text">{{name}}</span>
+        </td>
+    </div>
+    <div class="col-md-5">
+        <td>
+            {{timeReady}}
+        </td>
+    </div>
+    <div class="col-md-2">
+        <td>
+            <button type="button" class="btn btn-default delete">Remove</button>
+        </td>
+    </div>
+</template>
+
+<template name="time">
+    {{timeString}}
+</template>
